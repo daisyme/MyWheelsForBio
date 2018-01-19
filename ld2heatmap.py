@@ -9,6 +9,7 @@ ld=pd.read_csv(sys.argv[1],sep='\t',header=None)
 listPos1=ld[1].unique().tolist()
 listPos2=ld[2].unique().tolist()
 listPos=list(set(listPos1)|set(listPos2))
+listPos.sort()
 listIdx=[i for i in range(len(listPos))]
 dictI2P=dict(zip(listIdx,listPos))
 dictP2I=dict(zip(listPos,listIdx))
