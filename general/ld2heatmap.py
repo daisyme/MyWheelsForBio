@@ -20,6 +20,7 @@ for row in ld.itertuples():
 	hm[dictP2I[row[3]]][dictP2I[row[2]]]=row[5]
 
 HM=np.asfarray(hm)
+
 #use the index then another plot on the side for locations
 fig=plt.figure(figsize=(20,10))
 fig.suptitle("Heatmap for LD with corresponding positions")
@@ -31,10 +32,12 @@ ax3=plt.subplot(gs[3])
 plt.plot(listPos,listIdx)
 ax3.tick_params(labelbottom=True, labelleft=False)
 plt.show()
+
 #simply plot it with locus info below
 pdhm=pd.DataFrame(data=HM,index=listPos,columns=listPos).fillna(2)
 sns.heatmap(pdhm)
 plt.show()
+
 #use a mask to plot only part of the matrix
 mask=np.zeros_like(HM)
 mask[np.triu_indices_from(mask)]=True
