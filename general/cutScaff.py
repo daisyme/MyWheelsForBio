@@ -5,8 +5,9 @@ import pandas as pd
 
 fasta_file=sys.argv[1]
 chr_list_file=sys.argv[2]
-out_fasta_file1="In_"+os.path.basename(fasta_file)
-out_fasta_file2="Out_"+os.path.basename(fasta_file)
+pre=sys.argv[3]
+out_fasta_file1="In_"+pre+".fasta"
+out_fasta_file2="Out_"+pre+".fasta"
 
 ChrList=[line.strip() for line in open(chr_list_file)]
 Fasta=open(fasta_file,'r')
