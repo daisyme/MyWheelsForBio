@@ -1,8 +1,7 @@
 #!/bin/bash
 #$ -m beas
-#$ -q bio,adl,sf,pub64,free64 
-#$ -pe openmp 32-64
-#$ -hold_jid gdata
+#$ -q bio,adl,sf,abio,pub64,free64,pub8i,free32i 
+#$ -pe openmp 8
 
 source /data/users/ytao7/.bashrc
 

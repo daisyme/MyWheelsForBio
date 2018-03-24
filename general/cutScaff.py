@@ -6,8 +6,9 @@ import pandas as pd
 fasta_file=sys.argv[1]
 chr_list_file=sys.argv[2]
 pre=sys.argv[3]
-out_fasta_file1="In_"+pre+".fasta"
-out_fasta_file2="Out_"+pre+".fasta"
+
+out_fasta_file1=pre+".fasta"
+out_fasta_file2=pre+"_out.fasta"
 
 ChrList=[line.strip() for line in open(chr_list_file)]
 Fasta=open(fasta_file,'r')
@@ -22,11 +23,10 @@ for lines in Fasta:
 	if line[0] == '>':
 		now=line[1:]
 		if now in ChrList:
-			Now=In
+			Now = In
 		else:
-			Now=Out
+			Now = Out
 	print >> Now, line
-
 Fasta.close()
 In.close()
 Out.close()

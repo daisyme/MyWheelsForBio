@@ -3,6 +3,7 @@
 #$ -m beas
 #$ -q bio,adl,sf,pub64,free64 
 #$ -pe openmp 32-64
+#$ -ckpt blcr
 #source /data/users/ytao7/.bashrc
 
 module load bowtie2
