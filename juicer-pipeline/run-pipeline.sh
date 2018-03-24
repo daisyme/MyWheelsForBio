@@ -28,7 +28,7 @@ while getopts 't:s:c:' opt; do
 done
 shift $(( OPTIND-1 ))
 
-raw_sam=$1
+raw_asm=$1
 mnd=$2
 
 bash /share/adl/ytao7/summer/3d-dna/3d-dna-master/run-pipeline.sh -m haploid -t $threshold -s $step -c $chromosome $raw_asm $mnd
