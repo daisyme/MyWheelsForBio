@@ -37,10 +37,10 @@ do
     awk -v "fname1"=${name}${ext}_norm.txt -v "fname2"=${name}${ext}_abnorm.sam -v "fname3"=${name}${ext}_unmapped.sam -f ${scriptDir}/scripts/chimeric_blacklist.awk $name$ext.sam
     awk '{printf("%s %s %s %d %s %s %s %d", $1, $2, $3, 0, $4, $5, $6, 1); for (i=7; i<=NF; i++) {printf(" %s",$i);}printf("\n");}' $name${ext}_norm.txt > $name${ext}.frag.txt           
     sort -T $tmpdir -k2,2d -k6,6d -k4,4n -k8,8n -k1,1n -k5,5n -k3,3n $name${ext}.frag.txt > $name${ext}.sort.txt
-    touch ${outputdir}/${library}_dups.txt
-    touch ${outputdir}/${library}_optdups.txt
-    touch ${outputdir}/${library}_merged_nodups.txt
-    awk -f ${scriptDir}/scripts/dups.awk -v name="${outputdir}/${library}_" $name${ext}.sort.txt 
+    #touch ${outputdir}/${library}_dups.txt
+    #touch ${outputdir}/${library}_optdups.txt
+    #touch ${outputdir}/${library}_merged_nodups.txt
+    #awk -f ${scriptDir}/scripts/dups.awk -v name="${outputdir}/${library}_" $name${ext}.sort.txt 
 done
 sort -T $tmpdir -m -k2,2d -k6,6d -k4,4n -k8,8n -k1,1n -k5,5n -k3,3n $splitdir/*.sort.txt  > $outputdir/merged_sort.txt
 touch ${outputdir}/dups.txt
