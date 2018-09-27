@@ -28,8 +28,8 @@ do
     sort -T $tmpdir -k1,1 ${name}READ1$ext > ${name}1${ext}_sort.sam
     sort -T $tmpdir -k1,1 ${name}READ2$ext > ${name}2${ext}_sort.sam
 
-    awk 'BEGIN{OFS="\t"}NF>=11{$1=$1"/1"; print}' ${name}1${ext}_sort.sam > ${name}1${ext}_sort1.sam
-    awk 'BEGIN{OFS="\t"}NF>=11{$1=$1"/2"; print}' ${name}2${ext}_sort.sam > ${name}2${ext}_sort1.sam
+    awk 'BEGIN{OFS="\t"}substr($1,1,1)!="@"{$1=$1"/1"; print}' ${name}1${ext}_sort.sam > ${name}1${ext}_sort1.sam
+    awk 'BEGIN{OFS="\t"}substr($1,1,1)!="@"{$1=$1"/2"; print}' ${name}2${ext}_sort.sam > ${name}2${ext}_sort1.sam
     
     sort -T $tmpdir -k1,1 -m ${name}1${ext}_sort1.sam ${name}2${ext}_sort1.sam > ${name}${ext}.sam
    

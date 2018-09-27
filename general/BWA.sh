@@ -32,6 +32,7 @@ name=$(basename ${1%%[.]*})
 echo "number=$number"
 echo "ref=$ref"
 echo "name=$name"
+echo "$outDir/$name.align2ref.sam"
 
 if [ $number -eq 1 ]
 then

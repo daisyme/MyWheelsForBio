@@ -15,6 +15,6 @@ mv $workDir/*READ* $dataDir
 [ -f $1.amb ] && [ -f $1.ann ] && [ -f $1.bwt ] && [ -f $1.pac ] && [ -f $1.sa ]|| bwa index $1
 for reads in $(ls $dataDir/*READ*)
 do
-	qsub -N bwa_$2 ~/software/mytools/general/BWA.sh -r $ref -n 1 $reads -o $splitDir
+	qsub -N bwa_$2 ~/software/mytools/general/BWA.sh -r $ref -n 1 -o $splitDir $reads
 done
-#qsub -N mnd_$2 -hold_jid bwa_$2 ~/software/mytools/juicer-pipeline/run-mnd.sh $2
+qsub -N mnd_$2 -hold_jid bwa_$2 ~/software/mytools/juicer-pipeline/run-mnd.sh $2
