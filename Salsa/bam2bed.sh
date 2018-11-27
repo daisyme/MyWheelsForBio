@@ -5,7 +5,10 @@
 
 module load bedtools
 
-mkdir bed
-LABEL=$1
-bedtools bamtobed -i rep/$1.bam > bed/$1.bed
-sort -k 4 bed/$1.bed > tmp$1 && mv tmp$1 bed/$1.bed
+
+OUT=$1
+LABEL=$2
+cd $OUT
+[ -d bed ] || mkdir bed
+bedtools bamtobed -i merge/$LABEL.bam > bed/$LABEL.bed
+sort -k 4 bed/$LABEL.bed > tmp$LABEL && mv tmp$LABEL bed/$LABEL.bed

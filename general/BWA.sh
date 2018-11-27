@@ -1,7 +1,7 @@
 #! /bin/bash
 #$ -N BWA
-#$ -q bio,adl,abio,pub64,free64
-#$ -pe openmp 8
+#$ -q bio,adl,abio,pub*,free*
+#$ -pe openmp 16
 #$ -m beas
 #$ -ckpt blcr
 #$ -R y
@@ -40,6 +40,7 @@ then
 else
 	if [ $format == 'bam' ]
 	then
+		echo "I am bug!"
 		bwa mem -t $CORES -M $ref $1 $2 | samtools sort -@$CORES -O BAM -o $outDir/$name.22.bam
 	else
 		bwa mem -t $CORES -M $ref $1 $2 > $outDir/$name.align22ref.sam

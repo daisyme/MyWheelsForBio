@@ -4,12 +4,14 @@
 
 module load enthought_python
 
-contigs=$1
-fai=$2
-bed=$3
+REF=$1
+fai=$REF.fai
+OUT=$2
+LABEL=$3
+bed=$OUT/bed/$LABEL.bed
 enzyme=$4
-scaffold=$5
-modify=$6
+scaffold=$OUT/out/$LABEL
+modify=$5
 
-python /data/users/ytao7/software/SALSA/run_pipeline.py -a $contigs -l $fai -b $bed -e $enzyme -o $scaffold -m $modify
+python /data/users/ytao7/software/SALSA/run_pipeline.py -a $REF -l $fai -b $bed -e $enzyme -o $scaffold -m $modify
 
