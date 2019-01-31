@@ -10,8 +10,9 @@ OUT=$2
 LABEL=$3
 bed=$OUT/bed/$LABEL.bed
 enzyme=$4
-scaffold=$OUT/out/$LABEL
+scaffold=$OUT/out
 modify=$5
-
+echo "BED:"$bed
+echo "REF:"$ref
 python /data/users/ytao7/software/SALSA/run_pipeline.py -a $REF -l $fai -b $bed -e $enzyme -o $scaffold -m $modify
 
