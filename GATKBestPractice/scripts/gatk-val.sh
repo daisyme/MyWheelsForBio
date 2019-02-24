@@ -5,7 +5,7 @@
 #$ -l h_vmem=16g
 #$ -l mem_free=20g
 
-GATK="/data/apps/gatk/4.0.4.0/gatk-package-4.0.4.0-local.jar"
+GATK="/data/users/ytao7/software/gatk-4.1.0.0/gatk-package-4.1.0.0-local.jar"
 module load java/1.8.0.111
 
 sample=$1
@@ -20,7 +20,7 @@ java -d64 -Xmx8g -jar $GATK SortSam \
 
 cd $odir
 
-#Actually I should do merge here...
+#Actually I should do merge here...For multi-lib - single-sample
 #java -jar $GATK MarkDuplicates \
 #--TMP_DIR=tmp \
 #-I=${sample}_sorted_file1.bam \

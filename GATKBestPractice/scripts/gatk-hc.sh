@@ -8,7 +8,7 @@
 
 # when it gets stable, the top results to be ~2 cores.
 
-GATK="/data/apps/gatk/4.0.4.0/gatk-package-4.0.4.0-local.jar"
+GATK="/data/users/ytao7/software/gatk-4.1.0.0/gatk-package-4.1.0.0-local.jar"
 module load java/1.8.0.111
 
 sample=$1
