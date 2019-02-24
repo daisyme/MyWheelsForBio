@@ -102,7 +102,8 @@ do
 ## To run it in parallel
 #    len=$(grep $chrFmt$i$'\t' $ref.fai | cut -f2)
 #    qsub -N gt-$i-$REF -hold_jid db-$i-$REF -t 1-$((($len+$batch-1)/$batch)) scripts/gatk-gt-parallel.sh $ref $REF $i $chrFmt $batch $DBdir $VCFdir
-
+#    for i in {1..$chrNum};do num=0;tmpDir="TMP_"$chrFmt$i; for vcf in $(ls $tmpDir/*vcf) ; do [ -f $vcf.idx ] || num=$(($num+1)); done; echo $i:$num:$(me | grep gtp-$i-DC | wc -l); done
+#    for i in {1..$chrNum};do num=0;tmpDir="TMP-"$chrFmt$i; for vcf in $(ls $tmpDir/*vcf) ; do [ -f $vcf.idx ] && num=$(($num+1)); done; echo $i:$num:$(me | grep gtp-$i-DC | wc -l); done
 # The file name format for vcf is fixed-written in gatk-gt
     vcf=${REF}_$i.vcf.gz
     qsub -N filter-$i-$REF -hold_jid gt-$i-$REF scripts/gatk-filter.sh $ref $vcf $VCFdir $VCFdir

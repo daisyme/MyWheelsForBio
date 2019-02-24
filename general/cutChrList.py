@@ -1,20 +1,17 @@
 import sys, os
 import pandas as pd
 
-#python cutScaff.py orgin.fa chr_list.txt output.fa
+#python cutChrList.py orgin.fa chr_list.txt pre
 
 fasta_file=sys.argv[1]
 chr_list_file=sys.argv[2]
 pre=sys.argv[3]
 mode=sys.argv[4] #1 means stop at the first mismatch; 0 means scan all the files
 
-out_fasta_file1=pre+".fasta"
-out_fasta_file2=pre+"_out.fasta"
-
 ChrList=[line.strip() for line in open(chr_list_file)]
 Fasta=open(fasta_file,'r')
-In=open(out_fasta_file1,'w')
-Out=open(out_fasta_file2,'w')
+Now = open(pre+".fasta","w") #just to make it work
+Out=open("none",'w')
 now=0
 
 for lines in Fasta:
@@ -24,11 +21,16 @@ for lines in Fasta:
 	if line[0] == '>':
 		now=line[1:]
 		if now in ChrList:
-			Now = In
+			print(now)
+			Now.close()
+			Now = open(pre+now+".fasta","w")
 		else:
+			if mode==1:
+				exit(0) 
+			Now.close()
 			Now = Out
 	print >> Now, line
 Fasta.close()
-In.close()
+Now.close()
 Out.close()
 
