@@ -10,13 +10,13 @@ stat=0
 now=0
 while True:
 	c = Fasta.read(1)
-	now = now+1
 	if not c:
 		if stat == 1:
 			print(":"+str(now))
 		print("Done with "+str(Ns)+" Ns detected.")
 		break
 	if c == "N":
+		now = now + 1
 		Nlen = Nlen + 1
 		if stat == 0:
 			stat = 1
@@ -27,6 +27,7 @@ while True:
 	elif c == "\n":
 		continue
 	else:
+		now = now + 1
 		if stat == 0:
 			continue
 		if stat == 1:
